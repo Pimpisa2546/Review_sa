@@ -49,14 +49,24 @@ const ProductDisplay: React.FC = () => {
   };
 
   const handleOk = async () => {
-    const memberID = getMemberByID(); // ดึง MemberID ที่นี่
+    const memberID = getMemberByID();
+
+    // ตรวจสอบว่ากรอกคะแนนและคอมเมนต์แล้วหรือยัง
+    if (!rating) {
+      Modal.warning({
+        title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+        content: 'กรุณาให้คะแนนและเขียนคอมเมนต์ก่อนส่งรีวิว',
+      });
+      return; // หยุดการทำงานถ้ายังไม่ได้กรอกข้อมูล
+    }
+
     if (selectedProduct) {
       try {
         await axios.post('http://localhost:8000/review', {
           Rating: rating,
           Comment: reviewText,
           ProductsID: selectedProduct.ID,
-          MemberID: memberID, // ส่ง MemberID
+          MemberID: memberID,
         });
 
         navigate('/review', { state: selectedProduct });

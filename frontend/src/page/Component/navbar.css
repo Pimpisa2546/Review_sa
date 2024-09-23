@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 /*font-family: 'Inter', sans-serif;*/
 .navbar {
-  width: 1371px;
-  height: 140px;
-  background-color: #ffffff;
+
+  background-color: #b31e1e;
   display: flex;
   justify-content: normal;
   align-items: center;
@@ -12,26 +11,19 @@
 }
 
 
-.navbar .right-section {
-  display: flex;
-  align-items: center;
+/* .navbar .right-section {
+  display:flex;
+  align-items:center;
 }
 
 
 .navbar .right-section .links .button {
   display: flex;
   align-items: center;
-  margin-right: 250px;
-}
+} */
 
 .logo {
   width: 240px;
-  margin-top: 12px;
-}
-
-
-.profile {
-  width: 90px;
 }
 
 
@@ -49,36 +41,37 @@
   font-size: 25px;
 }
 
-  .search input {
-    padding-left: 30px; 
-    margin-right: 50px;
-    width: 600px;
-    height: 40px;
-    border-radius: 25px;
-    background-image: url('../../icons/search-286.png'); 
-    background-repeat: no-repeat;
-    background-position: 5px center; 
-    background-size: 20px; 
-  }
+.search input {
+  padding-left: 30px; 
+  margin-right: 50px;
+  width: 600px;
+  height: 40px;
+  border-radius: 25px;
+  background-image: url('../../icons/search-286.png'); 
+  background-repeat: no-repeat;
+  background-position: 5px center; 
+  background-size: 20px; 
+}
   
-  .search input::placeholder {
-    color: #aaa; /* Optional: style the placeholder text */
-  }
+.search input::placeholder {
+  color: #aaa; /* Optional: style the placeholder text */
+}
 
 .button-seller{
-    background-color: #000000;
-    border-radius: 25px;
-    color: white;
-    width: 110px;
-    height: 40px;
-    /* margin-right: 20px; */
-    font-weight: bold;
+  background-color: #000000;
+  border-radius: 25px;
+  color: white;
+  width: 110px;
+  height: 40px;
+  /* margin-right: 20px; */
+  font-weight: bold;
 }
 
 .imgbox {
   display: flex;
   margin-left: 60px;
-  gap: 35px;
+  gap: 40px;
+  
 }
 .imgbox :hover{
   border-radius: 3px;

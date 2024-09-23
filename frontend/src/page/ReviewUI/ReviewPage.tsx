@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Table, Spin, Alert, Button, Modal,Rate } from 'antd';
+import { Table, Spin, Alert, Button, Modal, Rate } from 'antd';
 import { Product } from '../interface/product';
 import Navbar from "../Component/Navbar";
 import Re_bar from "../Component/re_bar";
@@ -10,6 +10,7 @@ interface Review {
   Comment: string;
   MemberID: number;
   ProductsID: number; // เพิ่ม ProductsID ในรีวิว
+  ImageURL?: string; // เพิ่มฟิลด์สำหรับเก็บ URL ของภาพ
 }
 
 const ReviewPage: React.FC = () => {
@@ -75,7 +76,7 @@ const ReviewPage: React.FC = () => {
             dataIndex: 'Picture_product',
             key: 'Picture_product',
             align: 'center',
-            width: 200, // กำหนดความกว้างของคอลัมน์ที่นี่
+            width: 200,
             render: (text: string) => (
               <img
                 src={text}
@@ -91,7 +92,7 @@ const ReviewPage: React.FC = () => {
             title: <div style={{ textAlign: 'center' }}>Title</div>,
             dataIndex: 'Title',
             key: 'Title',
-            width: 800, // กำหนดความกว้างของคอลัมน์ที่นี่
+            width: 800,
           },
           {
             title: <div style={{ textAlign: 'center' }}>Price</div>,
@@ -99,13 +100,13 @@ const ReviewPage: React.FC = () => {
             key: 'Price',
             render: (text: number) => (text !== undefined ? `฿${text.toFixed(2)}` : 'N/A'),
             align: 'center',
-            width: 200, // กำหนดความกว้างของคอลัมน์ที่นี่
+            width: 200,
           },
           {
             title: <div style={{ textAlign: 'center' }}>Review</div>,
             key: 'review',
             align: 'center',
-            width: 200, // กำหนดความกว้างของคอลัมน์ที่นี่
+            width: 200,
             render: (record) => (
               <Button onClick={() => showModal(record)} type="primary" style={{ backgroundColor: '#ff8c1a', borderColor: '#ff8c1a' }}>
                 ดูรีวิว
@@ -123,14 +124,23 @@ const ReviewPage: React.FC = () => {
         onCancel={handleCancel}
         footer={null}
       >
-        {/* <p>{`คุณกำลังดูรีวิวสินค้า: ${selectedProduct?.Title}`}</p> */}
         {reviews.length > 0 ? (
           reviews
             .filter((review) => review.ProductsID === selectedProduct?.ID) // กรองรีวิวที่ตรงกับผลิตภัณฑ์ที่เลือก
             .map((review, index) => (
-              <div key={index} style={{ marginBottom: '16px' }}>
+              <div key={index} style={{ marginBottom: '16px', padding: '10px', border: '1px solid #f0f0f0', borderRadius: '5px', backgroundColor: '#f4f0ec' }}>
                 <p>คะแนน: <Rate allowHalf disabled value={review.Rating || 0} /></p>
                 <p>ความคิดเห็น: {review.Comment}</p>
+                {review.ImageURL && (
+                  <img
+                    src={review.ImageURL}
+                    alt="review"
+                    style={{ width: 100, height: 100, objectFit: 'cover', marginTop: '8px' }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/100';
+                    }}
+                  />
+                )}
               </div>
             ))
         ) : (

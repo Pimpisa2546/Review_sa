@@ -37,3 +37,19 @@
     max-height: 400px; /* ปรับความสูงตามต้องการ */
     overflow-y: auto;  /* ทำให้สามารถเลื่อนในแนวตั้งได้ */
   }
+
+  .custom-modalsellrate1-5 .filter-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .custom-modalsellrate1-5 .filter-buttons button {
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .custom-modalsellrate1-5 .filter-buttons button:hover {
+    background-color: #1890ff; /* เปลี่ยนเป็นสีที่ต้องการเมื่อ hover */
+    color: white; /* เปลี่ยนสีตัวอักษรเป็นขาว */
+  }  
