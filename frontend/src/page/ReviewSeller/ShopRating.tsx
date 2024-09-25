@@ -163,7 +163,7 @@ const ShopRating: React.FC<{ sellerID: number; visible: boolean; onClose: () => 
   const [averageRating, setAverageRating] = useState<number | null>(null);
   const [reviewCount, setReviewCount] = useState<number>(0);
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [filteredReviews, setFilteredReviews] = useState<Review[]>([]);
+  const [filteredReviews, setFilteredReviews] = useState<Review[]>([]);//เพิ่ม 25/09/67
   const [members, setMembers] = useState<Member[]>([]);
   const [filterRating, setFilterRating] = useState<number | null>(null); // ใช้ในการจัดการตัวกรองคะแนน
 
@@ -222,26 +222,28 @@ const ShopRating: React.FC<{ sellerID: number; visible: boolean; onClose: () => 
     }
   }, [visible, reviews]);
 
+//เพิ่ม 29/09/67 ⬇
   const filterByRating = (rating: number | null) => {
     if (rating !== null) {
       const filtered = reviews.filter(review => review.Rating === rating);
       setFilteredReviews(filtered);
     } else {
-      setFilteredReviews(reviews); // แสดงรีวิวทั้งหมดถ้าไม่ได้เลือกตัวกรอง
+      setFilteredReviews(reviews); // แสดงรีวิวทั้งหมดถ้าไม่ได้เลือกตัวกรอง 25/09/67
     }
     setFilterRating(rating);
   };
-
+//⬆
   return (
     <Modal
       title="คะแนนร้านค้า"
       open={visible}
       onCancel={onClose}
       footer={null}
-      className="custom-modalsellrate1-5"
+      className="custom-modalsellrate1-5"//แก้ใหม่  29/09/67
     >
       {reviewCount > 0 ? (
         <div>
+          {/*เพิ่ม 25/09/67 ⬇ */}
           <div className="filter-buttons"> {/* ย้ายปุ่มไปด้านขวาบน */}
             <Button type={filterRating === 5 ? 'primary' : 'default'} onClick={() => filterByRating(5)}>5 ดาว</Button>
             <Button type={filterRating === 4 ? 'primary' : 'default'} onClick={() => filterByRating(4)}>4 ดาว</Button>
@@ -250,6 +252,7 @@ const ShopRating: React.FC<{ sellerID: number; visible: boolean; onClose: () => 
             <Button type={filterRating === 1 ? 'primary' : 'default'} onClick={() => filterByRating(1)}>1 ดาว</Button>
             <Button type={filterRating === null ? 'primary' : 'default'} onClick={() => filterByRating(null)} style={{ marginLeft: '10px' }}>แสดงทั้งหมด</Button>
           </div>
+          {/* ⬆ */}
 
           <p>คะแนนเฉลี่ย: {averageRating?.toFixed(2)} ⭐</p>
           <Rate allowHalf disabled value={averageRating || 0} />

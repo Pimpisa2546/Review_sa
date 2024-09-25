@@ -129,6 +129,7 @@ const ReviewPage: React.FC = () => {
             .filter((review) => review.ProductsID === selectedProduct?.ID) // กรองรีวิวที่ตรงกับผลิตภัณฑ์ที่เลือก
             .map((review, index) => (
               <div key={index} style={{ marginBottom: '16px', padding: '10px', border: '1px solid #f0f0f0', borderRadius: '5px', backgroundColor: '#f4f0ec' }}>
+                  {/* หลัง marginBottom ใส่เพิ่มมา 25/09/67 ⬆ */}
                 <p>คะแนน: <Rate allowHalf disabled value={review.Rating || 0} /></p>
                 <p>ความคิดเห็น: {review.Comment}</p>
                 {review.ImageURL && (

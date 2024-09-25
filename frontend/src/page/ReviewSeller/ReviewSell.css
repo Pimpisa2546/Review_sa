@@ -38,6 +38,7 @@
     overflow-y: auto;  /* ทำให้สามารถเลื่อนในแนวตั้งได้ */
   }
 
+  /* เพิ่ม 25/09/67 ⬇ */
   .custom-modalsellrate1-5 .filter-buttons {
     display: flex;
     justify-content: flex-end;
@@ -53,3 +54,4 @@
     background-color: #1890ff; /* เปลี่ยนเป็นสีที่ต้องการเมื่อ hover */
     color: white; /* เปลี่ยนสีตัวอักษรเป็นขาว */
   }  
+  /* ⬆ */
